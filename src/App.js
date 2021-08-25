@@ -34,10 +34,20 @@ const handleReset = () => {
   setTotal(0);
 }
 
+const wipeHistory = () => {
+  window.location.replace(`https://www.google.com/search?q=${motamo[total-1]}`)
+}
+
   return (
     <div className="App">
       <header className="App-header">
-      {total < 61 && letter < 6 ? <div className = "total">{letter} ({total})</div> : <div className = "total">{motamo[total-1].toUpperCase()} ({total})</div>}
+        {letter < 6
+          ? <div className = "total">{letter} ({total})</div>
+          : <div className = "total" onClick={wipeHistory}>
+              {total > 0 && total < 61 &&
+                motamo[total-1].toUpperCase()} ({total})
+            </div>
+        }
         <div className = "swipe">
           {letter < 6 &&
             <>
@@ -46,7 +56,7 @@ const handleReset = () => {
             </>
           }
         </div>
-        <div onClick={handleReset}>Reset</div>
+        <div onClick={handleReset}>RESET</div>
       </header>
     </div>
   );
