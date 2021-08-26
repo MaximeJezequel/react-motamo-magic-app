@@ -1,13 +1,5 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
   background-color: #141414;
   min-height: 100vh;
   display: flex;
@@ -15,11 +7,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-a{
-  text-decoration: none;
   color: white;
 }
 
@@ -35,12 +22,5 @@ a{
 .touch {
   height : 100%;
   width: 100%;
-}
-
-input{
-  background-color: #191919;
-  color: yellow;
-  font-size: 1em;
-  text-align: center;
-  width: 100px;
+  border: red dashed 1px;
 }
