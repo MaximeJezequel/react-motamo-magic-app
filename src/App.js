@@ -36,7 +36,6 @@ const handleReset = () => {
 
 const wipeHistory = () => {
   window.location.replace(`https://www.google.com/search?q=${motamo[total-1]}`)
-  // window.location.replace(`https://www.google.com/search?q=${motamo[total-1]}&tbm=isch`)
 }
 
   return (
