@@ -22,5 +22,8 @@
 .touch {
   height : 100%;
   width: 100%;
-  border: red dashed 1px;
+}
+
+.total:hover, .reset:hover {
+  cursor: pointer;
 }

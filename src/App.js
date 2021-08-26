@@ -37,8 +37,10 @@ function App() {
     let google = `https://www.google.com/search?q=${motamo[total-1]}`
     // let googleImg = `https://www.google.com/search?q=${motamo[total-1]}&tbm=isch`
     // let wikipedia = `https://fr.wikipedia.org/wiki/${motamo[total-1]}`
-    navigator.clipboard.writeText('')
-    window.location.replace(google)
+    
+    total > 0 && total < 61 &&
+    // navigator.clipboard.writeText('')
+    document.location.replace(google)
   }
 
   return (
@@ -58,7 +60,7 @@ function App() {
             </>
           }
         </div>
-        <div onClick={handleReset}>RESET</div>
+        <div className = "reset" onClick={handleReset}>RESET</div>
     </div>
   );
 }
