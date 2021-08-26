@@ -36,3 +36,11 @@ a{
   height : 100%;
   width: 100%;
 }
+
+input{
+  background-color: #191919;
+  color: yellow;
+  font-size: 1em;
+  text-align: center;
+  width: 100px;
+}

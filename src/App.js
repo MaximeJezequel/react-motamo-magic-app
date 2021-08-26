@@ -7,9 +7,9 @@ function App() {
 
 const motamo =
 ['acteur', 'feutre', 'dessin', 'agenda', 'cadran', 'sudoku', 'casino', 'espace', 'danger', 'quiche',
-'guidon', 'cerise', 'zenith', 'etoile', 'saphir', 'fiesta', 'sketch', 'argent', 'chaton', 'ananas',
-'cheval', 'diable', 'citron', 'tomate', 'erreur', 'sphere', 'whisky', 'crypte', 'animal', 'zombie',
-'donjon', 'beauté', 'nectar', 'puzzle', 'pedalo', 'basket', 'medium', 'italie', 'jaunir', 'karaté',
+'guidon', 'cerise', 'zénith', 'étoile', 'saphir', 'fiesta', 'sketch', 'argent', 'chaton', 'ananas',
+'cheval', 'diable', 'citron', 'tomate', 'erreur', 'sphère', 'whisky', 'crypte', 'animal', 'zombie',
+'donjon', 'beauté', 'nectar', 'puzzle', 'pédalo', 'basket', 'médium', 'italie', 'jaunir', 'karaté',
 'parfum', 'banane', 'valise', 'maison', 'humour', 'idylle', 'jambon', 'oiseau', 'boxeur', 'hot-dog',
 'litchi', 'orange', 'brunch', 'rythme', 'moulin', 'voyage','bonzaï', 'piment', 'loisir','projet']
 
@@ -36,6 +36,7 @@ const handleReset = () => {
 
 const wipeHistory = () => {
   window.location.replace(`https://www.google.com/search?q=${motamo[total-1]}`)
+  // window.location.replace(`https://www.google.com/search?q=${motamo[total-1]}&tbm=isch`)
 }
 
   return (
