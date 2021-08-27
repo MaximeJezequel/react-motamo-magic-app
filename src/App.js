@@ -39,8 +39,8 @@ function App() {
     // let wikipedia = `https://fr.wikipedia.org/wiki/${motamo[total-1]}`
     
     total > 0 && total < 61 &&
-    // navigator.clipboard.writeText('')
-    document.location.replace(google)
+    navigator.clipboard.writeText('')
+    window.location.replace(google)
   }
 
   return (
