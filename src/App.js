@@ -40,7 +40,7 @@ function App() {
     
     total > 0 && total < 61 &&
     // navigator.clipboard.writeText('')
-    document.location.replace(google)
+    window.location.replace(google)
   }
 
   return (
