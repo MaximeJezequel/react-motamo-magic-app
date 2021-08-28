@@ -35,14 +35,20 @@ function App() {
 
   const wipeHistory = () => {
     let google = `https://www.google.com/search?q=${motamo[total-1]}`
-
+    
     total > 0 && total < 61 &&
     window.location.replace(google)
   }
 
   return (
     <div className="App">
-        <div className = "reset" onClick={handleReset}>RESET</div>
+        {letter < 6
+          ? <div className = "total">{letter} ({total})</div>
+          : <div className = "total" onClick={wipeHistory}>
+              {total > 0 && total < 61 &&
+                motamo[total-1].toUpperCase()} ({total})
+            </div>
+        }
         <div className = "swipe">
           {letter < 6 &&
             <>
@@ -51,13 +57,7 @@ function App() {
             </>
           }
         </div>
-        {letter < 6
-          ? <div className = "total">{letter} ({total})</div>
-          : <div className = "total" onClick={wipeHistory}>
-              {total > 0 && total < 61 &&
-                motamo[total-1].toUpperCase()} ({total})
-            </div>
-        }
+        <div className = "reset" onClick={handleReset}>RESET</div>
     </div>
   );
 }
