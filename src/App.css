@@ -27,10 +27,3 @@
 .total:hover, .reset:hover {
   cursor: pointer;
 }
-
-button {
-  all: unset;
-  color: white;
-  -webkit-text-fill-color: white;
-  cursor: pointer;
-}
