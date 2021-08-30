@@ -43,21 +43,21 @@ function App() {
   return (
     <div className="App">
         {letter < 6
-          ? <div className = "total">{letter} ({total})</div>
-          : <div className = "total" onClick={wipeHistory}>
+          ? <button className = "total">{letter} ({total})</button>
+          : <button className = "total" onClick={wipeHistory}>
               {total > 0 && total < 61 &&
                 motamo[total-1].toUpperCase()} ({total})
-            </div>
+            </button>
         }
         <div className = "swipe">
           {letter < 6 &&
             <>
-              <div className = "touch" onClick={handleYes}></div>
-              <div className = "touch" onClick={handleNo}></div>
+              <button className = "touch" onClick={handleYes}></button>
+              <button className = "touch" onClick={handleNo}></button>
             </>
           }
         </div>
-        <div className = "reset" onClick={handleReset}>RESET</div>
+        <button className = "reset" onClick={handleReset}>RESET</button>
     </div>
   );
 }
