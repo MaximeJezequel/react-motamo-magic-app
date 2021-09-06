@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
+.google-body{
+    font-family: 'Arimo', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Partie header */
+.google-header{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    margin:10px 20px;
+}
+.google-header .left{
+    display:flex;
+    flex-wrap:wrap;
+}
+.google-header p{
+    margin-right: 10px;
+    color: #787878;
+    cursor:pointer;
+}
+.google-header p:hover{
+    color: #000;
+}
+.google-header .right{
+    display: flex;
+    flex-wrap:wrap;
+}
+.google-header .right svg{
+    height: 30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor:pointer;
+}
+.google-header .right p.user{
+    font-size: 30px;
+    margin-top: 10px;
+    color: #595959;
+}
+/* Fin de la partie header */
+
+/* Partie principale */
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin-top: 100px;
+}
+
+.main img{
+    max-height: 92px;
+}
+.main .form-group{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.main .form-group input{
+    margin-top: 20px;
+    padding:15px;
+    border-radius: 50px;
+    border:1px solid #d1d1d1;
+    outline:none;
+    width: 100%;
+}
+.main .form-group input:hover, .main .form-group input:focus{
+    -webk-webkit-box-shadow: -8px -1px 19px -8px rgba(184,184,184,1);
+    -moz-box-shadow: -8px -1px 19px -8px rgba(184,184,184,1);
+    box-shadow: -8px -1px 19px -8px rgba(184,184,184,1);
+    border:none;
+}
+.main .form-group label i{
+    float: right;
+    font-size: 20px;
+    margin-top: -35px;
+    margin-right: -15px;
+    position: relative;
+    cursor: pointer;
+    color: #5c5c5c;
+}
+.main .buttons{
+    margin-top: 40px;
+}
+.main .buttons button{
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border:none; 
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor:pointer;
+    color: #4d4d4d;
+    outline:none;
+}
+/* Fin de la partie principale */
