@@ -41,37 +41,48 @@ const Google = () => {
     }
 
     return (
-        <div className = 'google-body'>
-            <section className = 'google-header'>
-                <div class="left">
-                    <p>Tous</p>
-                    <p>Images</p>
+        <div className = 'google'>
+            <div className = 'google-header'>
+                <div className="google-headerleft">
+                    <svg className="google-headerleftsvg"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+                    <p className="google-headerlefttitle active" >TOUS</p>
+                    <p className="google-headerlefttitle">IMAGES</p>
                 </div>
-                <div class="right">
-                    <svg class="gb_6e" focusable="false" viewBox="0 0 24 24"><path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path></svg>
-                    {/* <p class="user"><i class="fas fa-user-circle"></i></p> */}
+                <div className="google-headerright">
+                    <svg className="gb_6e" focusable="false" viewBox="0 0 24 24"><path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path></svg>
+                    <div className="google-user">M</div>
                 </div>
-            </section>
-            <section class="main">
+            </div>
+            <div className="body">
                 <img src="https://www.google.fr/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png" alt="" onClick={handleReset}/>
                 <div class="form-group">
                     <input type="texte">
+                    
                     {/* <label><i class="fas fa-microphone"></i></label> */}
                     </input>
                 </div>
-                <div class="buttons">
-                    {/* <button>Recherche Google</button> */}
-                    {/* <button>J'ai de la chance</button> */}
+                <div className="buttons">
+                    
+                    {letter < 1
+                    ? <>
+                    <button>Recherche Google</button>
+                    <button>J'ai de la chance</button>
+                    </>
+                    : <>
                     <button>Letter : {letter}</button>
                     <button onClick={wipeHistory}>Total : {total}</button>
+                    </>
+                    }
                 </div>
-            </section>
+            </div>
+            {/* <div>Google disponible en : English</div> */}
             {letter < 6 &&
                 <>
                     <div className = 'ghostLeft' onClick={handleYes}></div>
                     <div className = 'ghostRight' onClick={handleNo}></div>
                 </>
             }
+            {/* <div className="footer">France</div> */}
         </div>
     );
 }
