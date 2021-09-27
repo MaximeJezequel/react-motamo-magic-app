@@ -9,7 +9,7 @@
 }
 
 /* Partie header */
-.google-header{
+.header{
     display:flex;
     flex-wrap:wrap;
     justify-content:space-between;
@@ -17,69 +17,56 @@
     font-family: 'Helvetica Neue',sans-serif;
     font-weight: bolder;
 }
-.google-headerleft{
+.headerleft, .headerright{
     display:flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.google-headerlefttitle{
+.headerlefttitle{
     display: flex;
     justify-content: center;
     align-items: center;
     cursor:pointer;
     color: #787878;
-    cursor:pointer;
     height: 34px;
     font-size: 9pt;
     margin-right: 25px;
 }
-.active{
+.headeractive{
     color: #4285f4;
     margin-top: 15px;
     border-bottom: 2px solid #4285f4;
 }
-.google-headerleftsvg{
-    display: flex;
+.headerleftsvg{
     width: 24px;
     height: 24px;
-    margin-right: 15px;
+    margin-right: 25px;
 }
-.google-header path{
-    fill: #70757a;
-    background-color:purple;
+.header path{
     width: 24px;
     height: 24px;
     margin-right: 0px;
     padding: 0px;
+    fill: #70757a;
 }
 
-.google-headerright{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-.google-headerright svg{
-    height: 24px;
+.headerright svg{
     width: 24px;
-    fill: #70757a;
+    height: 24px;
     margin-right: 20px;
     cursor:pointer;
+    fill: #70757a;
 }
-.google-headerright p.user{
-    font-size: 30px;
-    margin-top: 10px;
-    color: #595959;
-}
+
 .google-user{
     display: flex;
-    height: 32px;
-    width: 32px;
-    background-color: #8D6E63;
-    border-radius: 50%;
     justify-content: center;
     align-items: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: #8D6E63;
     color: white;
     font-weight: lighter;
 }
@@ -90,62 +77,102 @@
     display: flex;
     flex-direction: column;
     align-items:center;
-    margin-top: 170px;
     width: 100%;
 }
 
+/* Image google */
 .body img{
     max-height: 92px;
 }
-.body .form-group{
-    display: flex;
-    width: 100%;
+
+.logo{
+    position: relative;
 }
-.form-group input{
-    margin: 20px 40px;
-    padding:10px;
-    border-radius: 50px;
-    border:1px solid #d1d1d1;
-    outline:none;
+.logoImg{
+    position: absolute;
+    right: 5px;
+    top: 72px;
+    color: #4285f4;
+    font-size: 16px;
+    font-family: roboto-regular, arial, sans-serif;
+    white-space: nowrap;
+}
+
+.searchBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: 40px;
     width: 100%;
 }
 
-.body .form-group label i{
-    float: right;
-    font-size: 20px;
-    margin-top: -35px;
-    margin-right: -15px;
+.form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     position: relative;
-    cursor: pointer;
-    color: #5c5c5c;
+    width: 100%;
+    height: 40px;
+    margin: 20px 40px;
+    border-radius: 50px;
+    border: 1px solid #d1d1d1;
 }
-.body .buttons{
+
+.leftlogo{
+    position: absolute;
+    top: 4px;
+    color: #8d949b;
+    padding: 4px 10px;
+}
+.number{
+    position: absolute;
+    margin: 0px;
+    padding: 0px 10px;
+    top: 10px;
+    font-size: 18px;
+}
+
+.form input{
+    /* position: absolute; */
+    width: 100%;
+    padding:0 40px 0 60px;
+    border: none;
+    font-size: 16px;
+    color: #202124;
+    background-color: transparent;
+}
+.form input:focus{
+    outline:none;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
     margin-top: 40px;
 }
-.body .buttons button{
+.buttons button{
     padding: 10px 20px;
-    background-color: #f0f0f0;
+    background-color: #F7F8FA;
     border:none; 
     border-radius: 5px;
-    margin-right: 10px;
+    margin: 0 10px;
     cursor:pointer;
     color: #4d4d4d;
     outline:none;
+    justify-content: center;
 }
 /* Fin de la partie principale */
-.empty{
-    height: 10vh;
-    background-color: violet;
-}
+
 .footer{
     position: fixed;
     display: flex;
     flex-direction: column;
-    background-color: #f2f2f2;
-    color: #70757A;
     width: 100%;
     height: 100px;
     bottom: 0px;
+    color: #70757A;
+    background-color: #f2f2f2;
     font-family: Arial, sans-serif;
 }
 
@@ -165,9 +192,16 @@
     padding: 0 30px;
 }
 
-/* .gflex{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
 
+.empty-top{
+    height: 100px;
+}
+.empty-bottom{
+    height: 40%;
+}
+
+@media screen and (min-width: 1024px){
+    .form{
+        width: 40%;
+    }
+}
