@@ -27,7 +27,7 @@
 .ghostLeft {
 	position: absolute;
 	width: 50%;
-	height: 60vh;
+	height: 55vh;
 	/* background-color: red; */
 	opacity: 0.1;
 	z-index: 10;
@@ -36,7 +36,7 @@
 .ghostRight {
 	position: absolute;
 	width: 50%;
-	height: 60vh;
+	height: 55vh;
 	/* background-color: green; */
 	opacity: 0.1;
 	z-index: 10;
