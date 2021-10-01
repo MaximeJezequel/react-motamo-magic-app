@@ -24,18 +24,6 @@
 	cursor: pointer;
 }
 
-<<<<<<< HEAD
-.total:hover, .reset:hover {
-  cursor: pointer;
-}
-
-button{
-  color:white;
-  border: none;
-  background-color: #141414;
-  font-size: calc(10px + 2vmin);
-}
-=======
 .ghostLeft {
 	position: absolute;
 	width: 50%;
@@ -54,4 +42,3 @@ button{
 	z-index: 10;
 	right: 0;
 }
->>>>>>> dev
