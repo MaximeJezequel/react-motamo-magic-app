@@ -14,6 +14,7 @@ const SearchBar = ({ letter, motamo, total, handleChange, handleEnter }) => {
 					placeholder={letter > 5 ? motamo[total - 1] : null}
 					onChange={(e) => handleChange(e)}
 					onKeyDown={(e) => handleEnter(e)}
+					value={letter === 6 ? "" : null}
 				></input>
 			</div>
 		</div>

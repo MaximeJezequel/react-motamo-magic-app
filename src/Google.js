@@ -13,15 +13,18 @@ import "./Google.css"
 const Google = () => {
 	// initial
 	let initial = "M"
+
 	// states
 	let [googleSearch, setGoogleSearch] = useState("")
 	let [letter, setLetter] = useState(0)
 	let [total, setTotal] = useState(0)
 	let [url, setUrl] = useState(0)
+
 	// functions
 	const goToRealGoogle = () => {
 		window.location.href = `https://www.google.com/search?q=${googleSearch}`
 	}
+
 	const handleChange = (e) => setGoogleSearch(e.target.value)
 
 	const handleEnter = (e) => {
