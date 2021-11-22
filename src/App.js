@@ -1,18 +1,17 @@
-import React from 'react';
+import React from "react"
 
 // import Black from './Black'
-import Google from './Google'
+import Google from "./Google"
 
-import './App.css';
+import "./App.css"
 
 function App() {
-
-  return (
-  <>
-    <Google />
-    {/* <Black /> */}
-  </>
-  );
+	return (
+		<>
+			<Google />
+			{/* <Black /> */}
+		</>
+	)
 }
 
-export default App;
+export default App

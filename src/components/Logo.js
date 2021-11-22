@@ -1,3 +1,5 @@
+import React from "react"
+
 const Logo = ({ handleReset, url }) => {
 	return (
 		<div className="logo">

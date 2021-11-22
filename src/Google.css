@@ -214,3 +214,12 @@
 		width: 40%;
 	}
 }
+
+@media screen and (max-width: 360px) {
+	.buttons button {
+		padding: 10px;
+	}
+	.footer-col {
+		padding: 0 15px;
+	}
+}

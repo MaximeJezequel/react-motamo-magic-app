@@ -1,3 +1,5 @@
+import React from "react"
+
 const Buttons = ({ letter, goToRealGoogle, wipeHistory, goToWiki }) => {
 	return (
 		<div className="buttons">

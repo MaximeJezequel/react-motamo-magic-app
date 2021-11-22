@@ -1,3 +1,5 @@
+import React from "react"
+
 const SearchBar = ({ letter, motamo, total, handleChange, handleEnter }) => {
 	return (
 		<div className="searchBar">
