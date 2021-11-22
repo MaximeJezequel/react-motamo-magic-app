@@ -14,7 +14,7 @@ const Header = ({
 	return (
 		<div className="header">
 			<div className="headerleft">
-				<svg className="headerleftsvg" onClick={handleMode}>
+				<svg className="headerleftsvg">
 					{/* <path d="M3 9h18v-2H3v2zm0"></path>
 					<path d="M3 14h18v-2H3v2zm0"></path>
 					<path d="M3 19h18v-2H3v2zm0"></path> */}
@@ -45,6 +45,7 @@ const Header = ({
 					className={
 						mode === "words" ? "google-user wordMode" : "google-user cardMode"
 					}
+					onClick={handleMode}
 				>
 					{letter > 0 ? total : initial}
 				</div>
