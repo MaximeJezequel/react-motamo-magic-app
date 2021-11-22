@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import Buttons from "./components/Buttons"
 import Footer from "./components/Footer"
@@ -6,23 +6,36 @@ import Header from "./components/Header"
 import Logo from "./components/Logo"
 import SearchBar from "./components/SearchBar"
 import TouchAreas from "./components/TouchAreas"
-import motamo from "./assets/motamo"
+import cards from "./assets/mnemonica"
+import words from "./assets/words"
 
 import "./Google.css"
 
 const Google = () => {
 	// initial
 	let initial = "M"
+	let motamo
 
 	// states
-	let [googleSearch, setGoogleSearch] = useState("")
-	let [letter, setLetter] = useState(0)
-	let [total, setTotal] = useState(0)
-	let [url, setUrl] = useState(0)
+	const [googleSearch, setGoogleSearch] = useState("")
+	const [mode, setMode] = useState("words")
+	const [letter, setLetter] = useState(0)
+	const [total, setTotal] = useState(0)
+	const [url, setUrl] = useState(0)
+
+	mode === "words" ? (motamo = words) : (motamo = cards)
 
 	// functions
 	const goToRealGoogle = () => {
-		window.location.href = `https://www.google.com/search?q=${googleSearch}`
+		window.location.href =
+			url === 0
+				? `https://www.google.com/search?q=${googleSearch}`
+				: `https://www.google.com/search?q=${googleSearch}&tbm=isch`
+		// window.history.pushState(
+		// 	{},
+		// 	"",
+		// 	`https://www.google.com/search?q=${googleSearch}`
+		// )
 	}
 
 	const handleChange = (e) => setGoogleSearch(e.target.value)
@@ -68,9 +81,15 @@ const Google = () => {
 		total > 0 && total < 61 && window.location.replace(wiki)
 	}
 
+	useEffect(() => {
+		setGoogleSearch("")
+	}, [])
+
 	return (
 		<div className="google">
 			<Header
+				mode={mode}
+				setMode={setMode}
 				url={url}
 				handleAll={handleAll}
 				handleImg={handleImg}

@@ -1,4 +1,4 @@
-const motamo = [
+const words = [
 	"acteur",
 	"feutre",
 	"dessin",
@@ -61,4 +61,4 @@ const motamo = [
 	"projet",
 ]
 
-export default motamo
+export default words
