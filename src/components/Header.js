@@ -4,13 +4,22 @@ const Header = ({
 	url,
 	handleAll,
 	handleImg,
+	handleReset,
 	letter,
+	count,
+	setCount,
 	total,
+	setMaxTotal,
 	initial,
 	mode,
 	setMode,
 }) => {
 	const handleMode = () => {
+		if (count !== 6) {
+			setCount(6)
+			setMaxTotal(61)
+			handleReset()
+		}
 		mode === "words" ? setMode("cards") : setMode("words")
 	}
 	return (
@@ -24,7 +33,9 @@ const Header = ({
 				</svg>
 				<p
 					className={
-						url === 0 ? "headerlefttitle headeractive" : "headerlefttitle"
+						url === 0 || url === 2
+							? "headerlefttitle headeractive"
+							: "headerlefttitle"
 					}
 					onClick={handleAll}
 				>
@@ -43,12 +54,7 @@ const Header = ({
 				<svg className="gb_6e" focusable="false" viewBox="0 0 24 24">
 					<path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path>
 				</svg>
-				<div
-					className={
-						mode === "words" ? "google-user wordMode" : "google-user cardMode"
-					}
-					onClick={handleMode}
-				>
+				<div className={`google-user ${mode}Mode`} onClick={handleMode}>
 					{letter > 0 ? total : initial}
 				</div>
 			</div>
