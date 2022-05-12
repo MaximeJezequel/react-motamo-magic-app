@@ -22,6 +22,7 @@ const Header = ({
 		}
 		mode === "words" ? setMode("cards") : setMode("words")
 	}
+
 	return (
 		<div className="header">
 			<div className="headerleft">

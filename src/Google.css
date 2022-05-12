@@ -155,8 +155,15 @@
 	color: #202124;
 	background-color: transparent;
 }
+.form input::placeholder {
+	color: #202124;
+}
 .form input:focus {
 	outline: none;
+}
+
+#result_dark::placeholder {
+	color: #e8eaed;
 }
 
 .buttons {
@@ -213,7 +220,25 @@
 	height: 100px;
 }
 .empty-bottom {
-	height: 40vh;
+	height: calc(60vh);
+}
+
+.dark {
+	background-color: #202124;
+	color: white;
+}
+
+.black {
+	background-color: #171717;
+	color: #9aa0a6;
+}
+
+.darkbottom {
+	border-bottom: 1px solid #212327;
+}
+
+.greyborder {
+	border: 1px solid #5f6368;
 }
 
 @media screen and (min-width: 1024px) {

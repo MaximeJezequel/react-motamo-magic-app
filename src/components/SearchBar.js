@@ -1,6 +1,7 @@
 import React from "react"
 
 const SearchBar = ({
+	darkMode,
 	motamo,
 	count,
 	letter,
@@ -11,7 +12,7 @@ const SearchBar = ({
 }) => {
 	return (
 		<div className="searchBar">
-			<div className="form">
+			<div className={darkMode ? "form greyborder" : "form"}>
 				<div>
 					{letter < 1 || letter === count ? (
 						<span className="material-icons leftlogo"> search </span>
@@ -21,6 +22,10 @@ const SearchBar = ({
 				</div>
 				<input
 					type="texte"
+					id={darkMode ? "result_dark" : "result_light"}
+					style={{
+						color: darkMode ? "#e8eaed" : "#202124",
+					}}
 					placeholder={letter > count - 1 ? motamo[total - 1] : ""}
 					onChange={(e) => handleChange(e)}
 					onKeyDown={(e) => handleEnter(e)}

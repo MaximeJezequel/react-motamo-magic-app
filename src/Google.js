@@ -16,6 +16,7 @@ import "./Google.css"
 const Google = () => {
 	// initial
 	let initial = "M"
+	let logoSize = "2x"
 	let motamo
 	let google = "https://www.google.com/search?q="
 
@@ -27,6 +28,7 @@ const Google = () => {
 	const [total, setTotal] = useState(0)
 	const [maxTotal, setMaxTotal] = useState(61)
 	const [url, setUrl] = useState(0)
+	const [darkMode, setDarkMode] = useState(false)
 
 	// modes
 	switch (mode) {
@@ -112,7 +114,7 @@ const Google = () => {
 	}
 
 	return (
-		<div className="google">
+		<div className={darkMode ? "google dark" : "google"}>
 			<Header
 				mode={mode}
 				setMode={setMode}
@@ -129,8 +131,14 @@ const Google = () => {
 			/>
 			<div className="empty-top"></div>
 			<div className="body">
-				<Logo handleReset={handleReset} url={url} />
+				<Logo
+					darkMode={darkMode}
+					logoSize={logoSize}
+					handleReset={handleReset}
+					url={url}
+				/>
 				<SearchBar
+					darkMode={darkMode}
 					motamo={motamo}
 					count={count}
 					letter={letter}
@@ -140,6 +148,7 @@ const Google = () => {
 					handleEnter={handleEnter}
 				/>
 				<Buttons
+					darkMode={darkMode}
 					letter={letter}
 					realGoogle={goToRealGoogle}
 					wipeHistory={wipeHistory}
@@ -151,7 +160,11 @@ const Google = () => {
 				<TouchAreas handleYes={handleYes} handleNo={handleNo} />
 			)}
 			<div className="empty-bottom"></div>
-			<Footer handleFR={handleFR} />
+			<Footer
+				darkMode={darkMode}
+				setDarkMode={setDarkMode}
+				handleFR={handleFR}
+			/>
 		</div>
 	)
 }
