@@ -15,20 +15,25 @@ import "./Google.css"
 
 const Google = () => {
 	// initial
-	let initial = "M"
-	let logoSize = "2x"
 	let motamo
 	let google = "https://www.google.com/search?q="
+	let defaultMode = process.env.REACT_APP_default_mode || "words"
+	let defaultUrl = parseInt(process.env.REACT_APP_default_url)
+	let darkTheme = parseInt(process.env.REACT_APP_dark_theme)
+	let logoSize = process.env.REACT_APP_logo_size || "2x"
+	let initial = process.env.REACT_APP_initial || "M"
+
+	console.log(logoSize)
 
 	// states
 	const [googleSearch, setGoogleSearch] = useState("")
-	const [mode, setMode] = useState("words")
+	const [mode, setMode] = useState(defaultMode)
 	const [count, setCount] = useState(6)
 	const [letter, setLetter] = useState(0)
 	const [total, setTotal] = useState(0)
 	const [maxTotal, setMaxTotal] = useState(61)
-	const [url, setUrl] = useState(0)
-	const [darkMode, setDarkMode] = useState(false)
+	const [url, setUrl] = useState(defaultUrl)
+	const [darkMode, setDarkMode] = useState(darkTheme)
 
 	// modes
 	switch (mode) {
@@ -116,6 +121,7 @@ const Google = () => {
 	return (
 		<div className={darkMode ? "google dark" : "google"}>
 			<Header
+				darkMode={darkMode}
 				mode={mode}
 				setMode={setMode}
 				url={url}

@@ -7,7 +7,13 @@ const Logo = ({ darkMode, logoSize, handleReset, url }) => {
 	return (
 		<div className="logo">
 			<img src={googleLogo} alt="" onClick={handleReset} />
-			{url === 1 && <span className="logoImg">images</span>}
+			{url === 1 && (
+				<span
+					className={logoSize === "2x" ? "logoImg logo2x" : "logoImg logo1x"}
+				>
+					images
+				</span>
+			)}
 		</div>
 	)
 }
