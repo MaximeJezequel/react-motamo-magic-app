@@ -1,4 +1,4 @@
-const words = [
+const france = [
 	"Bourg-en-Bresse",
 	"Laon",
 	"Moulins",
@@ -94,12 +94,11 @@ const words = [
 	"Bobigny",
 	"Créteil",
 	"Cergy",
+	"",
+	"",
+	"",
+	"",
 	"Bastia",
-	"Basse-Terre",
-	"Fort-de-France",
-	"Cayenne",
-	"Saint-Denis",
-	"Mamoudzou",
 ]
 
-export default words
+export default france

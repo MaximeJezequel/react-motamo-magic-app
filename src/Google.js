@@ -15,20 +15,23 @@ import "./Google.css"
 
 const Google = () => {
 	// initial
-	let initial = "M"
-	let logoSize = "2x"
 	let motamo
 	let google = "https://www.google.com/search?q="
+	let defaultMode = process.env.REACT_APP_default_mode || "words"
+	let defaultUrl = parseInt(process.env.REACT_APP_default_url || 0)
+	let darkTheme = parseInt(process.env.REACT_APP_dark_theme || 0)
+	let logoSize = process.env.REACT_APP_logo_size || "2x"
+	let initial = process.env.REACT_APP_initial || "M"
 
 	// states
 	const [googleSearch, setGoogleSearch] = useState("")
-	const [mode, setMode] = useState("words")
+	const [mode, setMode] = useState(defaultMode)
 	const [count, setCount] = useState(6)
 	const [letter, setLetter] = useState(0)
 	const [total, setTotal] = useState(0)
 	const [maxTotal, setMaxTotal] = useState(61)
-	const [url, setUrl] = useState(0)
-	const [darkMode, setDarkMode] = useState(false)
+	const [url, setUrl] = useState(defaultUrl)
+	const [darkMode, setDarkMode] = useState(darkTheme)
 
 	// modes
 	switch (mode) {
@@ -63,6 +66,10 @@ const Google = () => {
 	useEffect(() => {
 		setGoogleSearch("")
 	}, [])
+
+	useEffect(() => {
+		handleReset()
+	}, [count])
 
 	const goToRealGoogle = () => {
 		window.location.href =
@@ -101,7 +108,7 @@ const Google = () => {
 		setUrl(2)
 		setMode("france")
 		setCount(7)
-		setMaxTotal(100)
+		setMaxTotal(101)
 		handleReset()
 	}
 
@@ -116,14 +123,13 @@ const Google = () => {
 	return (
 		<div className={darkMode ? "google dark" : "google"}>
 			<Header
+				darkMode={darkMode}
 				mode={mode}
 				setMode={setMode}
 				url={url}
 				handleAll={handleAll}
 				handleImg={handleImg}
-				handleReset={handleReset}
 				letter={letter}
-				count={count}
 				setCount={setCount}
 				total={total}
 				setMaxTotal={setMaxTotal}
@@ -149,6 +155,7 @@ const Google = () => {
 				/>
 				<Buttons
 					darkMode={darkMode}
+					count={count}
 					letter={letter}
 					realGoogle={goToRealGoogle}
 					wipeHistory={wipeHistory}

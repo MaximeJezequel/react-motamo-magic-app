@@ -1,12 +1,11 @@
 import React from "react"
 
 const Header = ({
+	darkMode,
 	url,
 	handleAll,
 	handleImg,
-	handleReset,
 	letter,
-	count,
 	setCount,
 	total,
 	setMaxTotal,
@@ -15,18 +14,24 @@ const Header = ({
 	setMode,
 }) => {
 	const handleMode = () => {
-		if (count !== 6) {
-			setCount(6)
-			setMaxTotal(61)
-			handleReset()
-		}
-		mode === "words" ? setMode("cards") : setMode("words")
+		mode === "words" ? activateMode2() : activateMode1()
+	}
+
+	const activateMode1 = () => {
+		setMode("words")
+		setCount(6)
+		setMaxTotal(61)
+	}
+	const activateMode2 = () => {
+		setMode("cards")
+		setCount(6)
+		setMaxTotal(61)
 	}
 
 	return (
 		<div className="header">
 			<div className="headerleft">
-				<svg className="headerleftsvg">
+				<svg fill="#787878">
 					{/* <path d="M3 9h18v-2H3v2zm0"></path>
 					<path d="M3 14h18v-2H3v2zm0"></path>
 					<path d="M3 19h18v-2H3v2zm0"></path> */}
@@ -52,7 +57,11 @@ const Header = ({
 				</p>
 			</div>
 			<div className="headerright">
-				<svg className="gb_6e" focusable="false" viewBox="0 0 24 24">
+				<svg
+					focusable="false"
+					viewBox="0 0 24 24"
+					fill={darkMode ? "white" : "#787878"}
+				>
 					<path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path>
 				</svg>
 				<div className={`google-user ${mode}Mode`} onClick={handleMode}>
