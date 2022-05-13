@@ -8,61 +8,89 @@ import Logo from "./components/Logo"
 import SearchBar from "./components/SearchBar"
 import TouchAreas from "./components/TouchAreas"
 import cards from "./assets/mnemonica"
-import words from "./assets/words"
 import france from "./assets/france"
+import words from "./assets/stego"
+// import words from "./assets/words"
 
 import "./Google.css"
 
 const Google = () => {
 	// initial
-	let initial = "M"
-	let logoSize = "2x"
 	let motamo
+	let offset
 	let google = "https://www.google.com/search?q="
+	let defaultMode = process.env.REACT_APP_default_mode || "words"
+	let defaultUrl = parseInt(process.env.REACT_APP_default_url || 0)
+	let darkTheme = parseInt(process.env.REACT_APP_dark_theme || 0)
+	let logoSize = process.env.REACT_APP_logo_size || "2x"
+	let initial = process.env.REACT_APP_initial || "M"
 
 	// states
 	const [googleSearch, setGoogleSearch] = useState("")
-	const [mode, setMode] = useState("words")
-	const [count, setCount] = useState(6)
+	const [mode, setMode] = useState(defaultMode)
+	const [count, setCount] = useState(5)
 	const [letter, setLetter] = useState(0)
 	const [total, setTotal] = useState(0)
-	const [maxTotal, setMaxTotal] = useState(61)
-	const [url, setUrl] = useState(0)
-	const [darkMode, setDarkMode] = useState(false)
+	const [maxTotal, setMaxTotal] = useState(33)
+	const [url, setUrl] = useState(defaultUrl)
+	const [darkMode, setDarkMode] = useState(darkTheme)
+	const [browserName, setBrowserName] = useState("")
+
+	const browserDetect = () => {
+		if (navigator.userAgent.toLowerCase().indexOf("chrome") > -1) {
+			setBrowserName("chrome")
+		} else if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
+			setBrowserName("firefox")
+		}
+	}
 
 	// modes
 	switch (mode) {
 		case "words":
 			motamo = words
+			offset = 1
 			break
 		case "cards":
 			motamo = cards
+			offset = 0
 			break
 		case "france":
 			motamo = france
+			offset = 0
 			break
 		default:
 			motamo = words
+			offset = 1
 	}
 
 	switch (url) {
 		case 0:
-			google = `https://www.google.com/search?q=${motamo[total - 1]}`
+			google = `https://www.google.com/search?q=${motamo[total - 1 + offset]}`
 			break
 		case 1:
-			google = `https://www.google.com/search?q=${motamo[total - 1]}&tbm=isch`
+			google = `https://www.google.com/search?q=${
+				motamo[total - 1 + offset]
+			}&tbm=isch`
 			break
 		case 2:
-			google = `https://www.google.com/maps/place/${motamo[total - 1]}`
+			google =
+				browserName === "firefox"
+					? `https://www.google.com/maps/place/${motamo[total - 1 + offset]}`
+					: `https://www.google.com/search?q=${motamo[total - 1 + offset]}`
 			break
 		default:
-			google = `https://www.google.com/search?q=${motamo[total - 1]}`
+			google = `https://www.google.com/search?q=${motamo[total - 1 + offset]}`
 	}
 
 	// functions
 	useEffect(() => {
+		browserDetect()
 		setGoogleSearch("")
-	}, [])
+	}, [browserName])
+
+	useEffect(() => {
+		handleReset()
+	}, [count])
 
 	const goToRealGoogle = () => {
 		window.location.href =
@@ -101,29 +129,28 @@ const Google = () => {
 		setUrl(2)
 		setMode("france")
 		setCount(7)
-		setMaxTotal(100)
+		setMaxTotal(101)
 		handleReset()
 	}
 
 	const wipeHistory = () => {
-		total > 0 && total < maxTotal && window.location.replace(google)
+		total > 0 - offset && total < maxTotal && window.location.replace(google)
 	}
 	const goToWiki = () => {
-		let wiki = `https://fr.wikipedia.org/wiki/${motamo[total - 1]}`
-		total > 0 && total < maxTotal && window.location.replace(wiki)
+		let wiki = `https://fr.wikipedia.org/wiki/${motamo[total - 1 + offset]}`
+		total > 0 - offset && total < maxTotal && window.location.replace(wiki)
 	}
 
 	return (
 		<div className={darkMode ? "google dark" : "google"}>
 			<Header
+				darkMode={darkMode}
 				mode={mode}
 				setMode={setMode}
 				url={url}
 				handleAll={handleAll}
 				handleImg={handleImg}
-				handleReset={handleReset}
 				letter={letter}
-				count={count}
 				setCount={setCount}
 				total={total}
 				setMaxTotal={setMaxTotal}
@@ -139,6 +166,7 @@ const Google = () => {
 				/>
 				<SearchBar
 					darkMode={darkMode}
+					offset={offset}
 					motamo={motamo}
 					count={count}
 					letter={letter}
@@ -149,6 +177,7 @@ const Google = () => {
 				/>
 				<Buttons
 					darkMode={darkMode}
+					count={count}
 					letter={letter}
 					realGoogle={goToRealGoogle}
 					wipeHistory={wipeHistory}
@@ -163,6 +192,7 @@ const Google = () => {
 			<Footer
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
+				count={count}
 				handleFR={handleFR}
 			/>
 		</div>

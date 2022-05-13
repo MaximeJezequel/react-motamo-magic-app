@@ -2,6 +2,7 @@ import React from "react"
 
 const SearchBar = ({
 	darkMode,
+	offset,
 	motamo,
 	count,
 	letter,
@@ -26,7 +27,7 @@ const SearchBar = ({
 					style={{
 						color: darkMode ? "#e8eaed" : "#202124",
 					}}
-					placeholder={letter > count - 1 ? motamo[total - 1] : ""}
+					placeholder={letter > count - 1 ? motamo[total - 1 + offset] : ""}
 					onChange={(e) => handleChange(e)}
 					onKeyDown={(e) => handleEnter(e)}
 					value={letter === count ? "" : googleSearch}

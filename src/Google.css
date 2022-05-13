@@ -39,7 +39,7 @@
 	margin-top: 15px;
 	border-bottom: 2px solid #4285f4;
 }
-.headerleftsvg {
+.headerleft svg {
 	width: 24px;
 	height: 24px;
 	margin-right: 25px;
@@ -49,7 +49,6 @@
 	height: 24px;
 	margin-right: 0px;
 	padding: 0px;
-	fill: #70757a;
 }
 
 .headerright svg {
@@ -57,7 +56,6 @@
 	height: 24px;
 	margin-right: 20px;
 	cursor: pointer;
-	fill: #70757a;
 }
 
 .google-user {
@@ -103,12 +101,21 @@
 }
 .logoImg {
 	position: absolute;
-	right: 5px;
-	top: 72px;
 	color: #4285f4;
-	font-size: 16px;
 	font-family: roboto-regular, arial, sans-serif;
 	white-space: nowrap;
+}
+
+.logo2x {
+	right: 5px;
+	top: 72px;
+	font-size: 16px;
+}
+
+.logo1x {
+	right: 2px;
+	top: 43px;
+	font-size: 10px;
 }
 
 .searchBar {
