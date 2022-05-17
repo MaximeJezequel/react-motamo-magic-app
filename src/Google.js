@@ -18,12 +18,10 @@ const Google = () => {
 	let motamo
 	let google = "https://www.google.com/search?q="
 	let defaultMode = process.env.REACT_APP_default_mode || "words"
-	let defaultUrl = parseInt(process.env.REACT_APP_default_url)
-	let darkTheme = parseInt(process.env.REACT_APP_dark_theme)
+	let defaultUrl = parseInt(process.env.REACT_APP_default_url || 0)
+	let darkTheme = parseInt(process.env.REACT_APP_dark_theme || 0)
 	let logoSize = process.env.REACT_APP_logo_size || "2x"
 	let initial = process.env.REACT_APP_initial || "M"
-
-	console.log(logoSize)
 
 	// states
 	const [googleSearch, setGoogleSearch] = useState("")
