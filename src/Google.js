@@ -32,6 +32,15 @@ const Google = () => {
 	const [maxTotal, setMaxTotal] = useState(61)
 	const [url, setUrl] = useState(defaultUrl)
 	const [darkMode, setDarkMode] = useState(darkTheme)
+	const [browserName, setBrowserName] = useState("")
+
+	const browserDetect = () => {
+		if (navigator.userAgent.toLowerCase().indexOf("chrome") > -1) {
+			setBrowserName("chrome")
+		} else if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
+			setBrowserName("firefox")
+		}
+	}
 
 	// modes
 	switch (mode) {
@@ -56,7 +65,10 @@ const Google = () => {
 			google = `https://www.google.com/search?q=${motamo[total - 1]}&tbm=isch`
 			break
 		case 2:
-			google = `https://www.google.com/maps/place/${motamo[total - 1]}`
+			google =
+				browserName === "firefox"
+					? `https://www.google.com/maps/place/${motamo[total - 1]}`
+					: `https://www.google.com/search?q=${motamo[total - 1]}`
 			break
 		default:
 			google = `https://www.google.com/search?q=${motamo[total - 1]}`
@@ -64,8 +76,9 @@ const Google = () => {
 
 	// functions
 	useEffect(() => {
+		browserDetect()
 		setGoogleSearch("")
-	}, [])
+	}, [browserName])
 
 	const goToRealGoogle = () => {
 		window.location.href =
@@ -104,7 +117,7 @@ const Google = () => {
 		setUrl(2)
 		setMode("france")
 		setCount(7)
-		setMaxTotal(100)
+		setMaxTotal(101)
 		handleReset()
 	}
 
@@ -167,6 +180,7 @@ const Google = () => {
 			<Footer
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
+				count={count}
 				handleFR={handleFR}
 			/>
 		</div>

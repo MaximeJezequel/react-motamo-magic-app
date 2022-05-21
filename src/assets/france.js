@@ -1,4 +1,4 @@
-const words = [
+const france = [
 	"Bourg-en-Bresse",
 	"Laon",
 	"Moulins",
@@ -101,4 +101,4 @@ const words = [
 	"Bastia",
 ]
 
-export default words
+export default france

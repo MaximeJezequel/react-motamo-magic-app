@@ -4,6 +4,7 @@ import "../Google.css"
 
 const Buttons = ({
 	darkMode,
+	count,
 	letter,
 	goToRealGoogle,
 	wipeHistory,
@@ -17,7 +18,7 @@ const Buttons = ({
 					color: darkMode ? "#e8eaed" : "#4d4d4d",
 					backgroundColor: darkMode ? "#303134" : "#f7f8fa",
 				}}
-				onClick={letter < 6 ? goToRealGoogle : wipeHistory}
+				onClick={letter < count ? goToRealGoogle : wipeHistory}
 			>
 				Recherche Google
 			</button>
@@ -27,7 +28,7 @@ const Buttons = ({
 					color: darkMode ? "#e8eaed" : "#4d4d4d",
 					backgroundColor: darkMode ? "#303134" : "#f7f8fa",
 				}}
-				onClick={letter < 6 ? null : goToWiki}
+				onClick={letter < count ? null : goToWiki}
 			>
 				J'ai de la chance
 			</button>
