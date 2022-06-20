@@ -5,7 +5,6 @@
 	margin: 0;
 	padding: 0;
 	position: relative;
-	min-height: 100%;
 }
 
 /* Partie header */
@@ -57,7 +56,6 @@
 	margin-right: 20px;
 	cursor: pointer;
 }
-
 .google-user {
 	display: flex;
 	justify-content: center;
@@ -105,13 +103,11 @@
 	font-family: roboto-regular, arial, sans-serif;
 	white-space: nowrap;
 }
-
 .logo2x {
 	right: 5px;
 	top: 72px;
 	font-size: 16px;
 }
-
 .logo1x {
 	right: 2px;
 	top: 43px;
@@ -154,7 +150,6 @@
 }
 
 .form input {
-	/* position: absolute; */
 	width: 100%;
 	padding: 0 40px 0 60px;
 	border: none;
@@ -209,7 +204,7 @@
 	padding: 15px 30px;
 	border-bottom: 1px solid #dadce0;
 }
-.footer-row {
+.footer-row:hover {
 	cursor: pointer;
 }
 .footer-3col {
@@ -227,7 +222,7 @@
 	height: 100px;
 }
 .empty-bottom {
-	height: calc(60vh);
+	height: calc(100vh - 340px);
 }
 
 .dark {
@@ -260,5 +255,19 @@
 	}
 	.footer-col {
 		padding: 0 15px;
+	}
+}
+
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+	.empty-top {
+		height: 50px;
+	}
+
+	.empty-bottom {
+		height: calc(100vh - 90px);
+	}
+
+	.footer {
+		position: absolute;
 	}
 }

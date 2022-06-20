@@ -32,6 +32,16 @@ const Google = () => {
 	const [maxTotal, setMaxTotal] = useState(61)
 	const [url, setUrl] = useState(defaultUrl)
 	const [darkMode, setDarkMode] = useState(darkTheme)
+	const [browserName, setBrowserName] = useState("")
+	const [matrix, setMatrix] = useState([])
+
+	const browserDetect = () => {
+		if (navigator.userAgent.toLowerCase().indexOf("chrome") > -1) {
+			setBrowserName("chrome")
+		} else if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
+			setBrowserName("firefox")
+		}
+	}
 
 	// modes
 	switch (mode) {
@@ -56,7 +66,10 @@ const Google = () => {
 			google = `https://www.google.com/search?q=${motamo[total - 1]}&tbm=isch`
 			break
 		case 2:
-			google = `https://www.google.com/maps/place/${motamo[total - 1]}`
+			google =
+				browserName === "firefox"
+					? `https://www.google.com/maps/place/${motamo[total - 1]}`
+					: `https://www.google.com/search?q=${motamo[total - 1]}`
 			break
 		default:
 			google = `https://www.google.com/search?q=${motamo[total - 1]}`
@@ -64,12 +77,14 @@ const Google = () => {
 
 	// functions
 	useEffect(() => {
+		browserDetect()
 		setGoogleSearch("")
-	}, [])
+	}, [browserName])
 
 	useEffect(() => {
-		handleReset()
-	}, [count])
+		matrix && setLetter(matrix.length)
+		matrix && setTotal(matrix.reduce((a, b) => a + b, 0))
+	}, [matrix])
 
 	const goToRealGoogle = () => {
 		window.location.href =
@@ -84,18 +99,19 @@ const Google = () => {
 	}
 	const handleYes = () => {
 		if (letter < count) {
-			setLetter(letter + 1)
-			setTotal(total + Math.pow(2, count - 1 - letter))
+			setMatrix((matrix) => [...matrix, 2 ** (count - 1 - letter)])
 		}
 	}
 	const handleNo = () => {
 		if (letter < count) {
-			setLetter(letter + 1)
+			setMatrix((matrix) => [...matrix, 0])
 		}
 	}
+	const handleReturn = () => {
+		setMatrix([...matrix].slice(0, matrix.length - 1))
+	}
 	const handleReset = () => {
-		setLetter(0)
-		setTotal(0)
+		setMatrix([])
 		setGoogleSearch("")
 	}
 	const handleAll = () => {
@@ -129,13 +145,16 @@ const Google = () => {
 				url={url}
 				handleAll={handleAll}
 				handleImg={handleImg}
+				handleReset={handleReset}
 				letter={letter}
+				count={count}
 				setCount={setCount}
 				total={total}
 				setMaxTotal={setMaxTotal}
 				initial={initial}
+				handleReturn={handleReturn}
 			/>
-			<div className="empty-top"></div>
+			<div className="empty-top" onClick={handleReturn}></div>
 			<div className="body">
 				<Logo
 					darkMode={darkMode}
@@ -155,7 +174,6 @@ const Google = () => {
 				/>
 				<Buttons
 					darkMode={darkMode}
-					count={count}
 					letter={letter}
 					realGoogle={goToRealGoogle}
 					wipeHistory={wipeHistory}
@@ -170,6 +188,7 @@ const Google = () => {
 			<Footer
 				darkMode={darkMode}
 				setDarkMode={setDarkMode}
+				count={count}
 				handleFR={handleFR}
 			/>
 		</div>
