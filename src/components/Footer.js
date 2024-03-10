@@ -13,7 +13,7 @@ const Footer = ({ darkMode, setDarkMode, handleFR }) => {
 				className={darkMode ? "footer-row black darkbottom" : "footer-row"}
 				onClick={() => handleFR()}
 			>
-				France
+				Belgique
 			</div>
 			<div className={darkMode ? "footer-3col black" : "footer-3col"}>
 				{/* <div className="footer-col">Dark theme: off</div> */}
